@@ -3,6 +3,8 @@
 
 :root {
     --primary-color: red;
+    --dark-color: black;
+    --text-color: #333;
 
     // Default Layout
     --defaultlayout-header-height: 60px;
@@ -24,4 +26,17 @@ body {
     font-size: 1.6rem;
     line-height: 1.5rem;
     text-rendering: optimizeSpeed;
+    color: var(--text-color);
+}
+
+button, input, [tabindex] {
+    outline: none;
+    border: none;
+    display: flex;
+    align-items: center;
+}
+
+a[href] {
+    color: var(--text-color);
+    text-decoration: none;
 }

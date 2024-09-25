@@ -1,4 +1,8 @@
 .wrapper {
+    --search-border-radius: 4px;
+    --search-height: 40px;
+    --search-top-spacer: 8px;
+
     width: 100%;
     height: var(--defaultlayout-header-height);
     box-shadow: 0px 1px 1px rgb(0 0 0 / 12%);
@@ -8,7 +12,83 @@
 
 .inner {
     width: var(--defaultlayout-width);
-    background-color: #ccc;
+    background-color: white;
     height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logoImage {
+    height: 32px;
+    margin: 8px;
+}
+
+.clearButton {
+    display: none;
+}
+
+.clearButton .clearIcon {
+    height: 16px;
+}
+
+.search {
+    position: relative;
+    display: flex; /* Align input and button in a row */
+    width: 360px;
+    align-items: center; /* Center vertically */
+    background-color: #eee;
+    border-radius: var(--search-border-radius);
+    height: var(--search-height);
+
+    input {
+        color: var(--dark-color);
+        flex: 1; /* Allow the input to take available space */
+        padding: 8px; /* Add some padding for better appearance */
+        background-color: transparent;
+        font-size: 1.4rem;
+    }
+
+    input:not(:placeholder-shown) ~ .searchButton {
+        color: black;
+    }
+
+    button {
+        padding: 8px; /* Add padding to the button */
+        cursor: pointer; /* Show pointer cursor on hover */
+    }
+
+    &::after {
+        content: '';
+        position: absolute;
+        top: var(--search-top-spacer);
+        right: 40px;
+        height: calc(var(--search-height) - var(--search-top-spacer)*2);
+        width: 1px;
+        background-color: rgb(176, 176, 176);
+    }
+
+    &:focus-within {
+        border: 1.5px solid rgba(22, 24, 35, .2);
+    }
+}
+
+.searchButton {
+    border-top-right-radius: var(--search-border-radius);
+    border-bottom-right-radius: var(--search-border-radius);
+    border-left: 1px #282828;
+    // height: calc(var(--search-height) -3px);
+    height: 37px;
+
+    &:hover {
+        background-color: #ddd;
+    }
+}
+
+.searchIcon {
+    height: 24px;
+}
+
+.actions {
 
 }
