@@ -5,6 +5,10 @@
     --primary-color: red;
 }
 
+* {
+    box-sizing: border-box;
+}
+
 html {
     font-size: 65.5%;
 }
@@ -14,4 +18,6 @@ body {
     font-size: 1.6rem;
     line-height: 1.5rem;
     text-rendering: optimizeSpeed;
+    color: white;
+    background-color: black;
 }
