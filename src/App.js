@@ -2,12 +2,12 @@ import { Fragment } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { publicRoutes } from "./routes";
 import { DefaultLayout } from "./components/Layout";
+import Header from "./components/Layout/components/Header";
 
 function App() {
    return (
       <Router>
          <div>
-           <h1>React App hello</h1>
            <Routes>
                { publicRoutes.map((route, index) => {
                   const Page = route.component
