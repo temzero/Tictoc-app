@@ -1,6 +1,6 @@
 .wrapper {
     --search-border-radius: 4px;
-    --search-height: 40px;
+    --search-height: 36px;
     --search-top-spacer: 8px;
 
     width: 100%;
@@ -8,6 +8,8 @@
     box-shadow: 0px 1px 1px rgb(0 0 0 / 12%);
     display: flex;
     justify-content: center;
+    position: relative;
+    z-index: 1;
 }
 
 .inner {
@@ -32,10 +34,16 @@
     height: 16px;
 }
 
+.search, 
+.searchResult {
+    width: 400px;
+    z-index: 100;
+    position: relative;
+}
+
 .search {
     position: relative;
     display: flex; /* Align input and button in a row */
-    width: 360px;
     align-items: center; /* Center vertically */
     background-color: #eee;
     border-radius: var(--search-border-radius);
@@ -73,12 +81,34 @@
     }
 }
 
+.searchItems > :first-child {
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+}
+
+.searchItem {
+    font-size: 1.2rem;
+    font-weight: 400;
+    padding: 8px 12px;
+    cursor: pointer;
+
+    &:hover {
+        background-color: #eee;
+    }
+}
+
+.searchTitle {
+    color: var(--text-color);
+    font-weight: 600;
+    margin: 10px 12px;
+}
+
 .searchButton {
     border-top-right-radius: var(--search-border-radius);
     border-bottom-right-radius: var(--search-border-radius);
     border-left: 1px #282828;
     // height: calc(var(--search-height) -3px);
-    height: 37px;
+    height: calc(var(--search-height) - 3px);
 
     &:hover {
         background-color: #ddd;

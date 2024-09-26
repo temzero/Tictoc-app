@@ -5,7 +5,9 @@ import styles from './DefaultLayout.module.scss'
 function DefaultLayout({ children }) {
     return ( 
         <div className={styles.wrapper}>
-            <Header/>
+            <div className={styles.header}>
+                <Header/>
+            </div>
             <div className={styles.container}>
                 <Sidebar />
                 <div className={styles.content}>{children}</div>
