@@ -2,10 +2,29 @@ import { useEffect, useState } from 'react';
 import icons from '../../../../assets/icons';
 import styles from './Header.module.scss';
 import { Wrapper as PopperWrapper } from '../../../Popper/index';
+import Button from '../../../Button';
 
 import Tippy from '@tippyjs/react/headless';
 import AccountItem from '../../../AccountItem';
-// import 'tippy.js/dist/tippy.css'; // optional
+import DropMenu from '../../../Popper/DropMenu';
+
+const MENU_ITEMS = [
+   {
+      icon: icons.language,
+      title: 'English',
+      to: './language'
+   },
+   {
+      icon: icons.feedback,
+      title: 'Feedback & help',
+      to: './feedback'
+   },
+   {
+      icon: icons.shortcut,
+      title: 'Keyboard shortcut',
+      // to: 'shortcut'
+   },
+];
 
 function Header() {
    const [searchResults, setSearchResults] = useState(['Gulikit KK3 Max', '8bitdo Ultimate Controller for Xbox']);
@@ -54,7 +73,17 @@ function Header() {
                   </button>
                </div>
             </Tippy>
-            <div className={styles.actions}></div>
+            <div className={styles.actions}>
+               <Button disable text rounded small>Upload</Button>
+               <Button outline small >Register</Button>
+               <Button primary small >Log in</Button>
+
+               <DropMenu items={MENU_ITEMS}>
+                  <button className={styles.moreButton}>
+                     <img className={styles.moreIcon} src={icons.more} alt="more" />  
+                  </button>
+               </DropMenu>
+            </div>
          </div>
       </header>
    );

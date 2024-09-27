@@ -119,6 +119,25 @@
     height: 24px;
 }
 
-.actions {
+.moreIcon {
+    height: 2rem;
+}
 
+.moreButton {
+    margin-left: 6px;
+    background-color: transparent;
+    cursor: pointer;
+
+    &:hover {
+        opacity: .8;
+    }
+}  
+
+.actions {
+    display: flex;
+}
+
+.menuItemIcon {
+    height: 18px;
+    margin-right: 10px;
 }

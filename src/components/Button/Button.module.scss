@@ -1,0 +1,91 @@
+.wrapper {
+    display: inline-flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    min-width: 100px;
+    padding: 8px 16px;
+    border: 1.4px solid transparent;
+    border-radius: 4px;
+    font-size: 1.6rem;
+    font-weight: 600;
+    background-color: white;
+    user-select: none;
+    text-decoration: none;
+    cursor: pointer;
+
+    &:hover {
+        opacity: .8;
+    }
+
+    + .wrapper {
+        margin-left: 8px;
+    }
+}
+
+.buttonTitle {
+    padding: 0;
+}
+
+
+// Disable
+.disable {
+    --disable-opacity: .4;
+
+    opacity: var(--disable-opacity);
+    cursor: default;
+
+    &:hover {
+        opacity: var(--disable-opacity);
+        text-decoration: none;
+    }
+}
+
+.buttonIcon {
+    width: 16px;
+}
+
+.buttonIcon + .buttonTitle, 
+.buttonTitle + .buttonIcon {
+    margin-left: 8px;
+}
+
+// Button types
+.primary { 
+    color: white;
+    background-color: var(--primary-color);
+}
+
+.outline {
+    color: var(--primary-color);
+    border-color: currentColor;
+}
+
+.text {
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+.rounded {
+    border-radius: 100px;
+}
+
+// Button size
+.small {
+    font-size: 1.4rem;
+    min-width: 80px;
+    padding: 4px 12px
+}
+
+.medium {
+    font-size: 1.6rem;
+    min-width: 100px;
+    padding: 8px 16px
+}
+
+.large {
+    font-size: 2rem;
+    min-width: 120px;
+    padding: 12px 24px
+}
