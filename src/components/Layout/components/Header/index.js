@@ -12,7 +12,31 @@ const MENU_ITEMS = [
    {
       icon: icons.language,
       title: 'English',
-      to: './language'
+      children: {
+         title: 'Language',
+         data: [
+            {
+               type: 'Language',
+               code: 'en',
+               title: 'English'
+            },
+            {
+               type: 'Language',
+               code: 'vi',
+               title: 'Tiếng Việt'
+            },
+            {
+               type: 'Language',
+               code: 'cn',
+               title: 'Chinese'
+            },
+            {
+               type: 'Language',
+               code: 'jp',
+               title: 'Japan'
+            },
+         ]
+      }
    },
    {
       icon: icons.feedback,
@@ -34,6 +58,15 @@ function Header() {
    //       setSearchResults([...searchResults, 1, 2, 3]);
    //    }, 3000);
    // });
+
+   const handleDropMenu = (menuItem) => {
+      switch(menuItem.type) {
+         case 'Language':
+            // Handle change language
+            break;
+         default: 
+      }
+   }
 
    return (
       <header className={styles.wrapper}>
@@ -78,7 +111,7 @@ function Header() {
                <Button outline small >Register</Button>
                <Button primary small >Log in</Button>
 
-               <DropMenu items={MENU_ITEMS}>
+               <DropMenu items={MENU_ITEMS} onChange={handleDropMenu} >
                   <button className={styles.moreButton}>
                      <img className={styles.moreIcon} src={icons.more} alt="more" />  
                   </button>

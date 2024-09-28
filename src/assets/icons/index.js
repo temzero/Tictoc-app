@@ -7,6 +7,7 @@ const icons = {
    language: require('./language-svgrepo-com.svg').default,
    shortcut: require('./keyboard-svgrepo-com.svg').default,
    feedback: require('./danger-symbol-svgrepo-com.svg').default,
+   back: require('./left-arrow-thin.svg').default,
 };
 
 export default icons;
