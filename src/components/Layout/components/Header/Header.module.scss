@@ -134,11 +134,36 @@
     }
 }  
 
-.actions {
-    display: flex;
-}
-
 .menuItemIcon {
     height: 18px;
     margin-right: 10px;
+}
+
+.actions {
+    display: flex;
+    align-items: center;
+}
+
+.actionButton {
+    background-color: transparent;
+    margin-right: 12px;
+    cursor: pointer;
+
+    &:hover {
+        opacity: .8;
+    }
+}
+
+.actionIcon {
+    height: 24px;
+}
+
+.userAvatar {
+    cursor: pointer;
+    height: 32px;
+    border-radius: 32px;
+
+    &:hover {
+    opacity: .8;
+    }
 }

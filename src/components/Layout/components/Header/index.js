@@ -3,10 +3,13 @@ import icons from '../../../../assets/icons';
 import styles from './Header.module.scss';
 import { Wrapper as PopperWrapper } from '../../../Popper/index';
 import Button from '../../../Button';
+import userAvatar from '../../../../assets/images/voy.jpg'
 
 import Tippy from '@tippyjs/react/headless';
 import AccountItem from '../../../AccountItem';
 import DropMenu from '../../../Popper/DropMenu';
+
+const currentUser = true;
 
 const MENU_ITEMS = [
    {
@@ -49,6 +52,26 @@ const MENU_ITEMS = [
       // to: 'shortcut'
    },
 ];
+
+const userMenu = [
+   {
+      icon: icons.profile,
+      title: 'Profile',
+      to: './profile'
+   },
+   {
+      icon: icons.setting,
+      title: 'Setting',
+      to: './setting'
+   },
+   ...MENU_ITEMS,
+   {
+      icon: icons.logout,
+      title: 'Logout',
+      to: './logout',
+      separate: true,
+   },
+]
 
 function Header() {
    const [searchResults, setSearchResults] = useState(['Gulikit KK3 Max', '8bitdo Ultimate Controller for Xbox']);
@@ -106,15 +129,34 @@ function Header() {
                   </button>
                </div>
             </Tippy>
-            <div className={styles.actions}>
-               <Button disable text rounded small>Upload</Button>
-               <Button outline small >Register</Button>
-               <Button primary small >Log in</Button>
 
-               <DropMenu items={MENU_ITEMS} onChange={handleDropMenu} >
-                  <button className={styles.moreButton}>
-                     <img className={styles.moreIcon} src={icons.more} alt="more" />  
-                  </button>
+            <div className={styles.actions}>
+               {currentUser ? (
+                  <>
+                     <button className={styles.actionButton} >
+                        <img className={styles.actionIcon} src={icons.upload} />
+                     </button>
+                     <button className={styles.actionButton} >
+                        <img className={styles.actionIcon} src={icons.message} />
+                     </button>
+                  </>
+               ): (
+                     <>
+                        <Button disable text rounded small>Upload</Button>
+                        <Button outline small >Register</Button>
+                        <Button primary small >Log in</Button>
+                        
+                     </>
+               )}
+
+               <DropMenu items={currentUser ? userMenu : MENU_ITEMS} onChange={handleDropMenu} >
+                  {currentUser ? (
+                     <img className={styles.userAvatar} src={userAvatar} />
+                  ) : (
+                     <button className={styles.moreButton}>
+                        <img className={styles.moreIcon} src={icons.more} alt="more" />  
+                     </button>
+                  )}
                </DropMenu>
             </div>
          </div>
