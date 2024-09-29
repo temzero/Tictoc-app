@@ -7,10 +7,8 @@ function Img({ src, alt, className, fallback: inputFallback = images.noImage, ..
     const [fallback, setFallback] = useState('');
 
     const imageSrc = src || inputFallback;
-    console.log('Fallback image: ', images.noImage)
     
     const handleError = () => {
-        console.log('Load image fale, showing No image: ', images.noImage)
         setFallback(inputFallback);
     };
 

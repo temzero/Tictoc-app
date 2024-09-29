@@ -3,17 +3,15 @@ import icons from '../../../../assets/icons';
 import styles from './Header.module.scss';
 import { Wrapper as PopperWrapper } from '../../../Popper/index';
 import Button from '../../../Button';
-import userAvatar from '../../../../assets/images/voy.jpg';
 import Img from '../../../Image/index.js';
 import images from '../../../../assets/images/index.js';
-import Icons from '../../../Icons/index.js';
+import {MessageIcon, UploadIcon} from '../../../Icons/index.js';
 
-import Tippy from '@tippyjs/react/headless';
-import AccountItem from '../../../AccountItem';
+
 import DropMenu from '../../../Popper/DropMenu';
+import Search from '../Search/index.js';
 
 const currentUser = true;
-const invalidImage = 0;
 
 const MENU_ITEMS = [
    {
@@ -78,7 +76,6 @@ const userMenu = [
 ]
 
 function Header() {
-   const [searchResults, setSearchResults] = useState(['Gulikit KK3 Max', '8bitdo Ultimate Controller for Xbox']);
 
    // useEffect(() => {
    //    setTimeout(() => {
@@ -99,49 +96,17 @@ function Header() {
       <header className={styles.wrapper}>
          <div className={styles.inner}>
             <img className={styles.logoImage} src={icons.logo} alt="Tictoc" />
-            <Tippy
-               interactive={true} // Allow interaction with the dropdown
-               appendTo={document.body} // This ensures it is appended to the body
-               visible={searchResults.length > 0}
-               render={(attrs) => (
-                  <div className={styles.searchResult} tabIndex="-1" {...attrs}>
-                     <PopperWrapper>
-                        <div className={styles.searchItems}>
-                           {searchResults.map((result, index) => (
-                              <h6 key={index} className={styles.searchItem}>{result}</h6>
-                           ))}
-                        </div>
-
-                        <div><h5 className={styles.searchTitle}>Accounts</h5></div>
-                        <AccountItem/>
-                        <AccountItem/>
-                        <AccountItem/>
-
-                     </PopperWrapper>
-                  </div>
-               )}
-            >
-               <div className={styles.search}>
-                  <input type="text" placeholder="Search for accounts and videos" />
-
-                  <button className={styles.clearButton}>
-                     <img className={styles.clearIcon} src={icons.close} alt="Close" />
-                  </button>
-
-                  <button className={styles.searchButton}>
-                     <img className={styles.searchIcon} src={icons.search} alt="Close" />
-                  </button>
-               </div>
-            </Tippy>
+            
+            <Search/>
 
             <div className={styles.actions}>
                {currentUser ? (
                   <>
                      <button className={styles.actionButton} >
-                        <Icons.uploadIcon />
+                        <UploadIcon />
                      </button>
                      <button className={styles.actionButton} >
-                        <Icons.messageIcon width='24px' />
+                        <MessageIcon width='24px' />
                      </button>
                   </>
                ): (

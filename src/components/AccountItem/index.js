@@ -1,11 +1,12 @@
 import styles from './AccountItem.module.scss';
 import icons from '../../assets/icons';
 import avatar from '../../assets/images/khng.png';
+import Image from '../Image';
 
 function AccountItem() {
     return ( 
         <div className={styles.wrapper}>
-            <img className={styles.avatar} src={avatar} alt='Avatar'/>
+            <Image className={styles.avatar} alt='Avatar'/>
             <div className={styles.info}>
                 <p className={styles.name}>
                     <span >Nguyễn Trần Nhân</span>
