@@ -4,52 +4,63 @@ import AccountItem from '../../../AccountItem';
 import { Wrapper as PopperWrapper } from '../../../Popper/index';
 import styles from './Search.module.scss';
 import { useEffect, useRef, useState } from 'react';
-import { ClearIcon, SearchIcon } from '../../../Icons/index';
+import { ClearIcon, LoadingIcon, SearchIcon } from '../../../Icons/index';
 
 function Search() {
     const [searchValue, setSearchValue] = useState('');
     const [searchResults, setSearchResults] = useState([]);
-    const [showResult, setShowResult] = useState(true)
+    const [showResult, setShowResult] = useState(true);
+    const [loading, setLoading] = useState(false);
 
     const inputRef = useRef();
-    const handleClear = () => {
-        inputRef.current.focus();
-        setSearchResults([])
-        setSearchValue('');
-    };
-    
-    const handleHideResults = () => {
-        setShowResult(false)
-    };
 
     useEffect(() => {
-        setTimeout(() => {
-            setSearchResults(['Gulikit KK3 Max', '8bitdo Ultimate Controller for Xbox'])
-        }, 3000)
-    }, [])
+        
+        if(searchValue.trim()) {
+            
+            setLoading(true)
+            fetch(`https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(searchValue)}&type=less`)
+                .then((res) => res.json())
+                .then((res) => {
+                    // res.data.map(x => setSearchResults(x))
+                    // console.log('res.data.length :', res.data.length);
+                    setSearchResults(res.data);
+                })
+                .catch((error) => {
+                    console.error('Error fetching search results:', error)
+                    setLoading(false)
+                });
+        } else {
+            setSearchResults([])
+            setLoading(false)
+        }
+    }, [searchValue]);
+
+    const handleClear = () => {
+        inputRef.current.focus();
+        setSearchResults([]);
+        setSearchValue('');
+        setLoading(false)
+    };
+
+    const handleHideResults = () => {
+        setShowResult(false);
+    };
 
     return (
         <Tippy
-            interactive={true} // Allow interaction with the dropdown
-            appendTo={document.body} // This ensures it is appended to the body
+            interactive={true}
+            appendTo={document.body}
             visible={showResult && searchResults.length > 0}
             render={(attrs) => (
                 <div className={styles.searchResult} tabIndex="-1" {...attrs}>
                     <PopperWrapper>
-                        <div className={styles.searchItems}>
-                            {searchResults.map((result, index) => (
-                                <h6 key={index} className={styles.searchItem}>
-                                    {result}
-                                </h6>
-                            ))}
-                        </div>
-
                         <div>
                             <h5 className={styles.searchTitle}>Accounts</h5>
                         </div>
-                        <AccountItem />
-                        <AccountItem />
-                        <AccountItem />
+                        {searchResults.map((result) => (
+                            <AccountItem key={result.id} data={result} />
+                        ))}
                     </PopperWrapper>
                 </div>
             )}
@@ -70,6 +81,8 @@ function Search() {
                         <ClearIcon width="18px" />
                     </button>
                 )}
+                {loading && !searchValue && <LoadingIcon width='14px' className={styles.loadingIcon} />}
+
 
                 <button className={styles.searchButton}>
                     <SearchIcon width="24px" />

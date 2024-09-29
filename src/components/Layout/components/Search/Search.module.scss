@@ -90,3 +90,17 @@
 .clearButton .clearIcon {
     height: 16px;
 }
+
+.loadingIcon {
+    margin-right: 10px;
+    animation: spinner 1s linear infinite;
+}
+
+@keyframes spinner {
+    from {
+        transform: rotate(0);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
