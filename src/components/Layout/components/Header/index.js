@@ -3,13 +3,17 @@ import icons from '../../../../assets/icons';
 import styles from './Header.module.scss';
 import { Wrapper as PopperWrapper } from '../../../Popper/index';
 import Button from '../../../Button';
-import userAvatar from '../../../../assets/images/voy.jpg'
+import userAvatar from '../../../../assets/images/voy.jpg';
+import Img from '../../../Image/index.js';
+import images from '../../../../assets/images/index.js';
+import Icons from '../../../Icons/index.js';
 
 import Tippy from '@tippyjs/react/headless';
 import AccountItem from '../../../AccountItem';
 import DropMenu from '../../../Popper/DropMenu';
 
 const currentUser = true;
+const invalidImage = 0;
 
 const MENU_ITEMS = [
    {
@@ -134,10 +138,10 @@ function Header() {
                {currentUser ? (
                   <>
                      <button className={styles.actionButton} >
-                        <img className={styles.actionIcon} src={icons.upload} />
+                        <Icons.uploadIcon />
                      </button>
                      <button className={styles.actionButton} >
-                        <img className={styles.actionIcon} src={icons.message} />
+                        <Icons.messageIcon width='24px' />
                      </button>
                   </>
                ): (
@@ -145,13 +149,12 @@ function Header() {
                         <Button disable text rounded small>Upload</Button>
                         <Button outline small >Register</Button>
                         <Button primary small >Log in</Button>
-                        
                      </>
                )}
 
                <DropMenu items={currentUser ? userMenu : MENU_ITEMS} onChange={handleDropMenu} >
                   {currentUser ? (
-                     <img className={styles.userAvatar} src={userAvatar} />
+                     <Img className={styles.userAvatar} /> // src={userAvatar}
                   ) : (
                      <button className={styles.moreButton}>
                         <img className={styles.moreIcon} src={icons.more} alt="more" />  

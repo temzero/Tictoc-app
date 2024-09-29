@@ -3,7 +3,7 @@
 
 :root {
     --primary-color: rgb(252, 84, 84);
-    --primary-color-hover: rgba(252, 84, 84, .8);
+    --primary-color-hover: rgba(252, 84, 84, 0.8);
     --dark-color: black;
     --text-color: #333;
 
@@ -24,14 +24,16 @@ html {
 }
 
 body {
-    font-family: "Montserrat", sans-serif;
+    font-family: 'TikTokFont', 'Montserrat', sans-serif;
     font-size: 1.6rem;
     line-height: 1.5rem;
     text-rendering: optimizeSpeed;
     color: var(--text-color);
 }
 
-button, input, [tabindex] {
+button,
+input,
+[tabindex] {
     outline: none;
     border: none;
     display: flex;
@@ -41,4 +43,29 @@ button, input, [tabindex] {
 a[href] {
     color: var(--text-color);
     text-decoration: none;
+}
+
+// Fonts emmbeded
+@font-face {
+    font-family: TikTokFont;
+    src: url('../../assets/fonts/TikTokFont-Regular.woff2');
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: TikTokFont;
+    src: url('../../assets/fonts/TikTokFont-Semibold.woff2');
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: TikTokFont;
+    src: url('../../assets/fonts/TikTokFont-Bold.woff2');
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: TikTokFont;
+    src: url('../../assets/fonts/TikTokDisplayFont-Bold.woff2');
+    font-weight: 800;
 }

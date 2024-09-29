@@ -7,8 +7,6 @@ function MenuItem({ data, onClick }) {
         [styles.separate]: data.separate,  // Ensure `styles.separate` is used for correct scoping.
     });
 
-    console.log('Classes: ', classes);
-
     return (
         <Button className={classes} leftIcon={data.icon} to={data.to} onClick={onClick}>
             {data.title}
