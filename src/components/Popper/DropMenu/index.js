@@ -24,9 +24,10 @@ function DropMenu({ children, items = [], onChange = defaultFn, hideOnClick = fa
             }} />;
         });
     };
-
+    
     return (
         <Tippy
+            visible
             interactive={true}
             delay={[0,200]}
             placement="bottom-end"
@@ -37,7 +38,9 @@ function DropMenu({ children, items = [], onChange = defaultFn, hideOnClick = fa
                         {history.length > 1 && <Header title="Language" onBack={() => {
                             setHistory(prev => prev.slice(0, prev.length - 1))
                         }} />}
-                        {renderItems()}
+                    <div className={styles.menuScrollable}>
+                            {renderItems()}
+                        </div>
 
                     </PopperWrapper>
                 </div>

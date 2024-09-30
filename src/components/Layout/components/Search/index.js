@@ -61,46 +61,49 @@ function Search() {
     }
 
     return (
-        <Tippy
-            interactive={true}
-            appendTo={document.body}
-            visible={showResult && searchResults.length > 0}
-            render={(attrs) => (
-                <div className={styles.searchResult} tabIndex="-1" {...attrs}>
-                    <PopperWrapper>
-                        <div>
-                            <h5 className={styles.searchTitle}>Accounts</h5>
-                        </div>
-                        {searchResults.map((result) => (
-                            <AccountItem key={result.id} data={result} />
-                        ))}
-                    </PopperWrapper>
-                </div>
-            )}
-            onClickOutside={handleHideResults}
-        >
-            <div className={styles.search}>
-                <input
-                    ref={inputRef}
-                    value={searchValue}
-                    type="text"
-                    placeholder="Search for accounts and videos"
-                    onChange={handleInputChange}
-                    onFocus={() => setShowResult(true)}
-                />
+        <div>
 
-                {!!searchValue && (
-                    <button className={styles.clearButton} onClick={handleClear}>
-                        <ClearIcon width="18px" />
-                    </button>
+            <Tippy
+                interactive={true}
+                appendTo={document.body}
+                visible={showResult && searchResults.length > 0}
+                render={(attrs) => (
+                    <div className={styles.searchResult} tabIndex="-1" {...attrs}>
+                        <PopperWrapper>
+                            <div>
+                                <h5 className={styles.searchTitle}>Accounts</h5>
+                            </div>
+                            {searchResults.map((result) => (
+                                <AccountItem key={result.id} data={result} />
+                            ))}
+                        </PopperWrapper>
+                    </div>
                 )}
-                {loading && !searchValue && <LoadingIcon width="14px" className={styles.loadingIcon} />}
+                onClickOutside={handleHideResults}
+            >
+                <div className={styles.search}>
+                    <input
+                        ref={inputRef}
+                        value={searchValue}
+                        type="text"
+                        placeholder="Search for accounts and videos"
+                        onChange={handleInputChange}
+                        onFocus={() => setShowResult(true)}
+                    />
 
-                <button className={styles.searchButton} onMouseDown={(e) => e.preventDefault()}>
-                    <SearchIcon width="24px" />
-                </button>
-            </div>
-        </Tippy>
+                    {!!searchValue && (
+                        <button className={styles.clearButton} onClick={handleClear}>
+                            <ClearIcon width="18px" />
+                        </button>
+                    )}
+                    {loading && !searchValue && <LoadingIcon width="14px" className={styles.loadingIcon} />}
+
+                    <button className={styles.searchButton} onMouseDown={(e) => e.preventDefault()}>
+                        <SearchIcon width="24px" />
+                    </button>
+                </div>
+            </Tippy>
+        </div>
     );
 }
 

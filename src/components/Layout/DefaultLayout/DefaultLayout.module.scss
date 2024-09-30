@@ -14,9 +14,9 @@
 .container {
     width: var(--defaultlayout-width);
     min-height: 1000px;
-    background-color: #333;
     display: flex;
     z-index: 1;
+    margin-top: calc(var(--defaultlayout-header-height) + 20px);
 }
 
 .content {
