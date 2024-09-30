@@ -1,10 +1,8 @@
-import { useEffect, useState } from 'react';
+
 import icons from '../../../assets/icons/index.js';
 import styles from './Header.module.scss';
-import { Wrapper as PopperWrapper } from '../../../components/Popper/index';
 import Button from '../../../components/Button/index.js';
 import Img from '../../../components/Image/index.js';
-import images from '../../../assets/images/index.js';
 import { MessageIcon, UploadIcon } from '../../../components/Icons/index.js';
 
 import config from '../../../config';
@@ -98,6 +96,8 @@ function Header() {
                 <Link to={config.routes.home}>
                     <img className={styles.logoImage} src={icons.logo} alt="Tictoc" />
                 </Link>
+
+                <Button>{['What', ' ', 'tf']}</Button>
 
                 <Search />
 
