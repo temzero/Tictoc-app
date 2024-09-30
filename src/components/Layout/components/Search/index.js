@@ -3,8 +3,11 @@ import icons from '../../../../assets/icons';
 import AccountItem from '../../../AccountItem';
 import { Wrapper as PopperWrapper } from '../../../Popper/index';
 import styles from './Search.module.scss';
-import { useEffect, useRef, useState } from 'react';
 import { ClearIcon, LoadingIcon, SearchIcon } from '../../../Icons/index';
+import { useDebounce } from '../../../../hooks';
+
+import * as searchServices from '../../../../apiServices/searchServices';
+import { useEffect, useRef, useState } from 'react';
 
 function Search() {
     const [searchValue, setSearchValue] = useState('');
@@ -12,35 +15,33 @@ function Search() {
     const [showResult, setShowResult] = useState(true);
     const [loading, setLoading] = useState(false);
 
+    const debounced = useDebounce(searchValue, 500);
+
     const inputRef = useRef();
 
     useEffect(() => {
-        
-        if(searchValue.trim()) {
-            
-            setLoading(true)
-            fetch(`https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(searchValue)}&type=less`)
-                .then((res) => res.json())
-                .then((res) => {
-                    // res.data.map(x => setSearchResults(x))
-                    // console.log('res.data.length :', res.data.length);
-                    setSearchResults(res.data);
-                })
-                .catch((error) => {
-                    console.error('Error fetching search results:', error)
-                    setLoading(false)
-                });
+        if (searchValue.trim()) {
+            setLoading(true);
+
+            const fetchAPI = async () => {
+                setLoading(true);
+                const result = await searchServices.search(debounced);
+                setSearchResults(result);
+                setLoading(false);
+            };
+
+            fetchAPI();
         } else {
-            setSearchResults([])
-            setLoading(false)
+            setSearchResults([]);
+            setLoading(false);
         }
-    }, [searchValue]);
+    }, [debounced]);
 
     const handleClear = () => {
         inputRef.current.focus();
         setSearchResults([]);
         setSearchValue('');
-        setLoading(false)
+        setLoading(false);
     };
 
     const handleHideResults = () => {
@@ -81,8 +82,7 @@ function Search() {
                         <ClearIcon width="18px" />
                     </button>
                 )}
-                {loading && !searchValue && <LoadingIcon width='14px' className={styles.loadingIcon} />}
-
+                {loading && !searchValue && <LoadingIcon width="14px" className={styles.loadingIcon} />}
 
                 <button className={styles.searchButton}>
                     <SearchIcon width="24px" />
