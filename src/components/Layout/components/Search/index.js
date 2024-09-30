@@ -48,6 +48,18 @@ function Search() {
         setShowResult(false);
     };
 
+    const handleInputChange = (e) => {
+        const searchInput = e.target.value;
+        if (!searchInput.startsWith(' ') || searchInput.trim()) {
+            // searchInput = searchInput.trim();
+            setSearchValue(searchInput.trim());
+        }
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+    }
+
     return (
         <Tippy
             interactive={true}
@@ -73,7 +85,7 @@ function Search() {
                     value={searchValue}
                     type="text"
                     placeholder="Search for accounts and videos"
-                    onChange={(e) => setSearchValue(e.target.value)}
+                    onChange={handleInputChange}
                     onFocus={() => setShowResult(true)}
                 />
 
@@ -84,7 +96,7 @@ function Search() {
                 )}
                 {loading && !searchValue && <LoadingIcon width="14px" className={styles.loadingIcon} />}
 
-                <button className={styles.searchButton}>
+                <button className={styles.searchButton} onMouseDown={(e) => e.preventDefault()}>
                     <SearchIcon width="24px" />
                 </button>
             </div>

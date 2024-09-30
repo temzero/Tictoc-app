@@ -7,7 +7,7 @@ import { useState } from 'react';
 
 const defaultFn = () => {}
 
-function DropMenu({ children, items = [], onChange = defaultFn }) {
+function DropMenu({ children, items = [], onChange = defaultFn, hideOnClick = false }) {
 
     const [history, setHistory] = useState([{ data: items }])
     const current = history[history.length - 1]
@@ -30,6 +30,7 @@ function DropMenu({ children, items = [], onChange = defaultFn }) {
             interactive={true}
             delay={[0,200]}
             placement="bottom-end"
+            hideOnClick={hideOnClick}
             render={(attrs) => (
                 <div className={styles.menuItems} tabIndex="-1" {...attrs}>
                     <PopperWrapper>

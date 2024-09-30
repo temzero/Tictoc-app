@@ -7,9 +7,10 @@ import Img from '../../../Image/index.js';
 import images from '../../../../assets/images/index.js';
 import {MessageIcon, UploadIcon} from '../../../Icons/index.js';
 
-
+import routesConfig from '../../../../config/routes.js';
 import DropMenu from '../../../Popper/DropMenu';
 import Search from '../Search/index.js';
+import { Link } from 'react-router-dom';
 
 const currentUser = true;
 
@@ -95,7 +96,7 @@ function Header() {
    return (
       <header className={styles.wrapper}>
          <div className={styles.inner}>
-            <img className={styles.logoImage} src={icons.logo} alt="Tictoc" />
+            <Link to={routesConfig.home}><img className={styles.logoImage} src={icons.logo} alt="Tictoc" /></Link>
             
             <Search/>
 

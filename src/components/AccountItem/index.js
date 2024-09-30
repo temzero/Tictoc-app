@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import styles from './AccountItem.module.scss';
 import icons from '../../assets/icons';
 import avatar from '../../assets/images/khng.png';
@@ -18,5 +19,9 @@ function AccountItem({ data }) {
         </Link>
     );
 }
+
+AccountItem.propTypes = {
+    data: PropTypes.object.isRequired,
+};
 
 export default AccountItem;

@@ -11,6 +11,9 @@
     --defaultlayout-header-height: 60px;
     --defaultlayout-width: 1200px;
     --defaultlayout-horizontal-spacer: 4px;
+
+    // Font family
+    --default-font-family: 'TikTokFont', 'Montserrat', sans-serif;
 }
 
 * {
@@ -24,7 +27,7 @@ html {
 }
 
 body {
-    font-family: 'TikTokFont', 'Montserrat', sans-serif;
+    font-family: var(--default-font-family);
     font-size: 1.6rem;
     line-height: 1.5rem;
     text-rendering: optimizeSpeed;
