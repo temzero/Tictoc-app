@@ -27,7 +27,6 @@ function DropMenu({ children, items = [], onChange = defaultFn, hideOnClick = fa
     
     return (
         <Tippy
-            visible
             interactive={true}
             delay={[0,200]}
             placement="bottom-end"

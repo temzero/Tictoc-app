@@ -1,12 +1,12 @@
 import Tippy from '@tippyjs/react/headless';
-import icons from '../../../../assets/icons';
-import AccountItem from '../../../AccountItem';
-import { Wrapper as PopperWrapper } from '../../../Popper/index';
+import icons from '../../../assets/icons';
+import AccountItem from '../../../components/AccountItem';
+import { Wrapper as PopperWrapper } from '../../../components/Popper/index';
 import styles from './Search.module.scss';
-import { ClearIcon, LoadingIcon, SearchIcon } from '../../../Icons/index';
-import { useDebounce } from '../../../../hooks';
+import { ClearIcon, LoadingIcon, SearchIcon } from '../../../components/Icons/index';
+import { useDebounce } from '../../../hooks';
 
-import * as searchServices from '../../../../apiServices/searchServices';
+import * as searchServices from '../../../services/searchService';
 import { useEffect, useRef, useState } from 'react';
 
 function Search() {
@@ -58,11 +58,10 @@ function Search() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-    }
+    };
 
     return (
         <div>
-
             <Tippy
                 interactive={true}
                 appendTo={document.body}
