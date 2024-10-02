@@ -9,7 +9,7 @@ import DropMenu from '../../../components/Popper/DropMenu/index.js';
 import Search from '../Search/index.js';
 import { Link } from 'react-router-dom';
 
-const currentUser = true;
+const currentUser = false;
 
 const MENU_ITEMS = [
     {
@@ -96,8 +96,6 @@ function Header() {
                     <img className={styles.logoImage} src={icons.logo} alt="Tictoc" />
                 </Link>
 
-                <Button>{['What', ' ', 'tf']}</Button>
-
                 <Search />
 
                 <div className={styles.actions}>
@@ -112,9 +110,6 @@ function Header() {
                         </>
                     ) : (
                         <>
-                            <Button disable text rounded small>
-                                Upload
-                            </Button>
                             <Button outline small>
                                 Register
                             </Button>

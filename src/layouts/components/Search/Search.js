@@ -11,21 +11,22 @@ import { useEffect, useRef, useState } from 'react';
 function Search() {
     const [searchValue, setSearchValue] = useState('');
     const [searchResults, setSearchResults] = useState([]);
-    const [showResult, setShowResult] = useState(true);
+    const [showResult, setShowResult] = useState(false);
     const [loading, setLoading] = useState(false);
 
-    const debounced = useDebounce(searchValue, 500);
+    const debounceValue = useDebounce(searchValue, 500);
 
     const inputRef = useRef();
 
     useEffect(() => {
-        if (debounced) {  // Check the debounced value instead
+        if (debounceValue) {
+            // Check the debounceValue value instead
             setLoading(true);
-    
+
             const fetchAPI = async () => {
-                if (debounced) {
+                if (debounceValue) {
                     setLoading(true);
-                    const result = await searchServices.search(debounced);
+                    const result = await searchServices.search(debounceValue);
                     setSearchResults(result);
                     setLoading(false);
                 } else {
@@ -33,13 +34,13 @@ function Search() {
                     setLoading(false);
                 }
             };
-    
+
             fetchAPI();
         } else {
             setSearchResults([]);
             setLoading(false);
         }
-    }, [debounced]);
+    }, [debounceValue]);
 
     const handleClear = () => {
         inputRef.current.focus();
