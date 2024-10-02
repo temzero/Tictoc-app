@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import Tippy from '@tippyjs/react/headless';
 import styles from './DropMenu.module.scss';
 import { Wrapper as PopperWrapper } from '../index';
@@ -34,7 +35,7 @@ function DropMenu({ children, items = [], onChange = defaultFn, hideOnClick = fa
             render={(attrs) => (
                 <div className={styles.menuItems} tabIndex="-1" {...attrs}>
                     <PopperWrapper>
-                        {history.length > 1 && <Header title="Language" onBack={() => {
+                        {history.length > 1 && <Header title={current.title} onBack={() => {
                             setHistory(prev => prev.slice(0, prev.length - 1))
                         }} />}
                     <div className={styles.menuScrollable}>
@@ -49,6 +50,13 @@ function DropMenu({ children, items = [], onChange = defaultFn, hideOnClick = fa
             {children}
         </Tippy>
     );
+}
+
+DropMenu.prototypes = {
+    children: PropTypes.node.isRequired,
+    items: PropTypes.array,
+    onChange: PropTypes.bool,
+    hideOnClick: PropTypes.func,
 }
 
 export default DropMenu;

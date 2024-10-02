@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+import propTypes from 'prop-types';
 
 import classNames from 'classnames';
 import styles from './Button.module.scss';
@@ -72,7 +72,21 @@ function Button({
 }
 
 Button.propTypes = {
-    children: PropTypes.node,
+    to: propTypes.string,
+    href: propTypes.string,
+    disable: propTypes.bool,
+    primary: propTypes.bool,
+    outline: propTypes.bool,
+    text: propTypes.bool,
+    rounded: propTypes.bool,
+    small: propTypes.bool,
+    medium: propTypes.bool,
+    large: propTypes.bool,
+    children: propTypes.node.isRequired,
+    className: propTypes.string,
+    leftIcon: propTypes.node,
+    rightIcon: propTypes.node,
+    onClick: propTypes.func
 };
 
 export default Button;

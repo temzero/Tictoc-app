@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
 import styles from './AccountItem.module.scss';
 import icons from '../../assets/icons';
-import avatar from '../../assets/images/khng.png';
 import Image from '../Image';
 import { Link } from 'react-router-dom';
 
