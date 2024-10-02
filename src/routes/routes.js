@@ -1,12 +1,13 @@
-import config from "../config";
+import config from '../config';
 
-import { HeaderOnly } from "../layouts";
+import { HeaderOnly } from '../layouts';
 
-import Home from "../pages/Home";
-import Following from "../pages/Following";
-import Profile from "../pages/Profile";
-import Upload from "../pages/Upload";
-import Search from "../pages/Search";
+import Home from '../pages/Home';
+import Following from '../pages/Following';
+import Profile from '../pages/Profile';
+import Upload from '../pages/Upload';
+import Search from '../pages/Search';
+import Live from '../pages/File/File';
 
 const publicRoutes = [
     { path: config.routes.home, component: Home },
@@ -14,10 +15,9 @@ const publicRoutes = [
     { path: config.routes.nickname, component: Profile },
     { path: config.routes.upload, component: Upload, layout: HeaderOnly },
     { path: config.routes.search, component: Search, layout: Search },
-]
+    { path: config.routes.live, component: Live },
+];
 
-const privateRoutes = [
+const privateRoutes = [];
 
-]
-
-export { publicRoutes, privateRoutes }
+export { publicRoutes, privateRoutes };

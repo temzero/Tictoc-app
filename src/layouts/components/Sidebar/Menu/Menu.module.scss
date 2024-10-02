@@ -1,0 +1,26 @@
+.menuItem {
+    display: flex;
+    font-size: 1.8rem;
+    font-weight: 700;
+    align-items: center;
+    text-align: center;
+    padding: 8px;
+
+    &:active {
+        color: var(--primary-color);
+        font-size: 3rem;
+    }
+
+    &:hover {
+        // color: var(--primary-color);
+        opacity: 0.8;
+    }
+}
+
+.title {
+    margin-left: 20px;
+}
+
+.icon {
+    width: 24px;
+}

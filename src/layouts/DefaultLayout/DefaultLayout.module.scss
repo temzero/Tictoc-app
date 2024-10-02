@@ -13,6 +13,7 @@
 
 .container {
     width: var(--defaultlayout-width);
+    max-width: 100%;
     min-height: 1000px;
     display: flex;
     z-index: 1;
