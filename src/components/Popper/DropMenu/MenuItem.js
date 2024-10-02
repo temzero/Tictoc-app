@@ -1,11 +1,11 @@
-import Button from '../../Button';
+import Button from '../../Button/Button';
 import styles from './DropMenu.module.scss';
 import classNames from 'classnames';
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 
 function MenuItem({ data, onClick }) {
     const classes = classNames(styles.item, {
-        [styles.separate]: data.separate,  // Ensure `styles.separate` is used for correct scoping.
+        [styles.separate]: data.separate, // Ensure `styles.separate` is used for correct scoping.
     });
 
     return (
@@ -17,7 +17,7 @@ function MenuItem({ data, onClick }) {
 
 MenuItem.propTypes = {
     data: PropTypes.object.isRequired,
-    onClick: PropTypes.func
-}
+    onClick: PropTypes.func,
+};
 
 export default MenuItem;
