@@ -1,0 +1,55 @@
+.wrapper {
+    padding: 16px;
+    width: 280px;
+}
+
+.header {
+    display: flex;
+    // align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+}
+
+.avatar {
+    width: 52px;
+    height: 52px;
+    border-radius: 100px;
+    margin-right: 16px;
+    object-fit: cover;
+}
+
+.check {
+    width: 16px;
+}
+
+.button {
+    height: 36px;
+}
+
+.body {
+}
+
+.username {
+    font-size: 2rem;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+}
+
+.name {
+    margin-bottom: 6px;
+    font-size: 1.4rem;
+}
+
+.analytic {
+    display: flex;
+    margin-top: 12px;
+}
+
+.value {
+    margin-right: 4px;
+}
+
+.value ~ .value {
+    margin-left: 20px;
+}

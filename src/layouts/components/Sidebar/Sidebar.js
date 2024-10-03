@@ -5,7 +5,6 @@ import { GroupIcon, HomeIcon, LiveIcon } from '../../../components/Icons/Icons';
 import SuggestedAccounts from '../../../components/SuggestedAccounts/SuggestedAccounts';
 
 function Sidebar() {
-    console.log("routes: ", routes.home)
     return ( <aside className={styles.wrapper}>
         <Menu>
             <MenuItem title="For You" to={routes.home} icon={<HomeIcon/>} />

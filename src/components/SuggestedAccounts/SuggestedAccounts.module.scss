@@ -13,6 +13,7 @@
     display: flex;
     align-items: center;
     padding: 8px;
+    cursor: pointer;
 }
 
 .avatar {
@@ -27,13 +28,11 @@
     width: 16px;
 }
 
-.itemInfo {
-
-}
-
 .username {
     font-size: 1.6rem;
     margin-bottom: 4px;
+    display: flex;
+    align-items: center;
 }
 
 .name {
